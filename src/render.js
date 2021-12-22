@@ -4,7 +4,7 @@ function renderApp(input, todoList) {
 
 function renderForm() {
   return `<div class="form">
-    <input type="text" data-element="addTodoInput">
+    <input type="text" data-element="addTodoInput" id="addTodoInput">
     <button data-element="addTodoButton">Add</button>
   </div>`;
 }
@@ -14,16 +14,17 @@ function renderTodos(todoItems) {
 }
 
 function renderTodoItem(todo) {
-  return `<li class="${`todos__item todos__item_${todo.completed && 'checked'}`}">
-    <input type="checkbox" data-element="toggleTodo" data-id="${todo.id}"${todo.completed ? ' checked' : ''}>
+  return `<li class="${`todos__item todos__item_${
+    todo.completed && "checked"
+  }`}">
+    <input type="checkbox" data-element="toggleTodo" data-id="${todo.id}"${
+    todo.completed ? " checked" : ""
+  }>
     ${todo.title}
   </li>`;
 }
 
 export default (element, state) => {
-  const todoItems = state.todos.map(renderTodoItem).join('');
-  element.innerHTML = renderApp(
-    renderForm(),
-    renderTodos(todoItems)
-  );
-}
+  const todoItems = state.todos.map(renderTodoItem).join("");
+  element.innerHTML = renderApp(renderForm(), renderTodos(todoItems));
+};

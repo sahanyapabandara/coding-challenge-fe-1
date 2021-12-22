@@ -49,22 +49,30 @@ export const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case "ADD":
-      state.todos.push({
-        id: uniqueId.get(),
-        title: action.title,
-        completed: false,
-      });
-      break;
+      return {
+        ...state,
+        todos: [
+          ...state.todos,
+          {
+            id: uniqueId.get(),
+            title: action.title,
+            completed: false,
+          },
+        ],
+      };
     case "TOGGLE":
-      for (let todo of state.todos) {
-        if (todo.id === action.id) {
-          todo.completed = !todo.completed;
-          break;
-        }
-      }
-      break;
+      return {
+        ...state,
+        todos: state.todos.map((todo) =>
+          todo.id === action.id ? { ...todo, completed: !todo.completed } : todo
+        ),
+      };
     case "FILTER_ACTION":
-      state.selectedFilterId = action.id;
-      break;
+      return {
+        ...state,
+        selectedFilterId: action.id,
+      };
+    default:
+      return state;
   }
 };

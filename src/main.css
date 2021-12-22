@@ -18,6 +18,10 @@ body {
   margin: 8px;
 }
 
+.todos__item input {
+  cursor: pointer;
+}
+
 .todos__item_checked {
   background-color: #9ea;
 }

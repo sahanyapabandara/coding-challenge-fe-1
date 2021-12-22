@@ -5,7 +5,7 @@ body {
 }
 
 .form {
-  padding: 8px
+  padding: 8px;
 }
 
 .todos {
@@ -20,4 +20,16 @@ body {
 
 .todos__item_checked {
   background-color: #9ea;
+}
+
+.filters {
+  margin: 0;
+  padding: 8px;
+  list-style-type: none;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+}
+
+.filters li label {
+  cursor: pointer;
 }

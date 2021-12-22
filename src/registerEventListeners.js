@@ -25,3 +25,7 @@ addListener("keypress", '[data-element="addTodoInput"]', (e) => {
     document.querySelector('[data-element="addTodoInput"]').focus();
   }
 });
+
+addListener("click", '[data-element="filterTodo"]', (e) => {
+  store.dispatch(todoActions.todoFilterActions(parseInt(e.target.value)));
+});
